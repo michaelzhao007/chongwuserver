@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.chong.dog.model">
+
+	<class name="Dog" table="chong_dog">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="dogName" type="string"/>
+		<property name="dogAge" type="int"/>
+		<property name="dogSex" type="string"/>
+		<property name="dogImageUrl" type="string"/>
+		<property name="description" type="string"/>
+		
+
+	</class>
+</hibernate-mapping>

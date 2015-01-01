@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+
+	<session-factory>
+
+		<!-- 其他配置 -->
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="show_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
+		<property name="c3p0.max_size">100</property>
+		<property name="c3p0.min_size">30</property>
+
+		<!-- 3.导入映射文件 -->
+		<mapping resource="com/chong/login/model/User.hbm.xml" />
+		<mapping resource="com/chong/login/model/SecurToken.hbm.xml" />
+		<mapping resource="com/chong/login/model/Dog.hbm.xml" />
+
+
+	</session-factory>
+
+
+</hibernate-configuration>
