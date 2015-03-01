@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.chong.login.SpringTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.709 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.416 sec

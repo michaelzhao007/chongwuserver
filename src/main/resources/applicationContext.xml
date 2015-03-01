@@ -57,14 +57,14 @@
 				<property name="driverClass" value="${driverClass}"></property>
 				<property name="user" value="${user}"></property>
 				<property name="password" value="${password}"></property> -->
-			 	<property name="jdbcUrl" value="jdbc:mysql:///chong"></property>
+			 	<!--  <property name="jdbcUrl" value="jdbc:mysql:///chong"></property>
 				<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-				<property name="user" value="root"></property>
-				<property name="password" value="m19881123"></property>   
-			<!-- 	<property name="jdbcUrl" value="jdbc:mysql://dogadoption.ctjktnzzskbl.us-west-2.rds.amazonaws.com/DogAdoption"></property>
+				<property name="user" value="root"></property> 
+				<property name="password" value="m19881123"></property>-->   
+			    <property name="jdbcUrl" value="jdbc:mysql://dogadoption.ctjktnzzskbl.us-west-2.rds.amazonaws.com/DogAdoption"></property>
 				<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
 				<property name="user" value="michaelzhao007"></property>
-				<property name="password" value="m19881123"></property> -->
+				<property name="password" value="m19881123"></property> 
 			</bean>
 		</property>
 	</bean>

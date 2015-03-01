@@ -1,6 +1,6 @@
 com/chong/dog/controller/ListDogController.class
-com/chong/filter/SimpleCORSFilter.class
 com/chong/login/model/User.class
+com/chong/filter/SimpleCORSFilter.class
 com/chong/login/controller/LoginController.class
 com/chong/dog/service/impl/DogServiceImpl.class
 com/chong/model/Response.class

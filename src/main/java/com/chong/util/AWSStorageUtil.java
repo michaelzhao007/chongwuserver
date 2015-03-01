@@ -17,8 +17,8 @@ public class AWSStorageUtil {
 	private BasicAWSCredentials credentials;
 	private AmazonS3 s3;
 	private String bucketName;
-	private static final String accessKey = "AKIAJ2KZOLLUFF3G7BMQ";
-	private static final String secretKey = "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";
+	private static final String accessKey = "";
+	private static final String secretKey = "";
 	private static AWSStorageUtil awsStorageUtil;
 	
 	private AWSStorageUtil(){
