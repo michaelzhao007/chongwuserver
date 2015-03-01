@@ -26,7 +26,7 @@ public class DogServiceImpl implements DogService {
 	}
 
 	@Override
-	@CacheEvict(value="chong-dogs-cache",allEntries=true)
+//	@CacheEvict(value="chong-dogs-cache",allEntries=true)
 	public void createDog(Dog dog) {
 		getSession().save(dog);
 	}
@@ -50,7 +50,7 @@ public class DogServiceImpl implements DogService {
 		}
 	
 	@Override
-	@Cacheable("chong-dogs-cache")
+//	@Cacheable("chong-dogs-cache")
 	public List<Dog> getAllDogs(){
 		System.out.println("fetching dogs");
 		return getSession().createQuery(

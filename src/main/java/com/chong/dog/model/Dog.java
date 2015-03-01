@@ -7,7 +7,7 @@ public class Dog implements Serializable {
 
 	private Long id;
 	private String dogName;
-	private Integer dogAge;
+	private String dogAge;
 	private String dogSex;
 	private String dogImageUrl;
 	private String description;
@@ -23,10 +23,10 @@ public class Dog implements Serializable {
 	public void setDogName(String dogName) {
 		this.dogName = dogName;
 	}
-	public Integer getDogAge() {
+	public String getDogAge() {
 		return dogAge;
 	}
-	public void setDogAge(Integer dogAge) {
+	public void setDogAge(String dogAge) {
 		this.dogAge = dogAge;
 	}
 	public String getDogSex() {

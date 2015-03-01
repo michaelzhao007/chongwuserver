@@ -12,7 +12,7 @@
 				http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
 	<context:component-scan base-package="com"></context:component-scan>
-	 <cache:annotation-driven cache-manager="cacheManager"  mode="proxy" proxy-target-class="true" /> 
+	<!--  <cache:annotation-driven cache-manager="cacheManager"  mode="proxy" proxy-target-class="true" /> 
 
 	<hz:hazelcast id="server">
 		<hz:config>
@@ -41,22 +41,30 @@
 	</hz:client>
 	<bean id="cacheManager" class="com.hazelcast.spring.cache.HazelcastCacheManager">
 		<constructor-arg ref="server" />
-	</bean>
+	</bean> -->
 
 
 	<!-- 导入外部的properties文件 -->
 	<!--<context:property-placeholder location="classpath:jdbc-local.properties"></context:property-placeholder> -->
-	<context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+	<context:property-placeholder location="classpath:jdbc-dev.properties"></context:property-placeholder>
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
 		<property name="dataSource">
 			<bean class="com.mchange.v2.c3p0.ComboPooledDataSource">
-				<property name="jdbcUrl" value="${jdbcUrl}"></property>
+			<!-- 	<property name="jdbcUrl" value="${jdbcUrl}"></property>
 				<property name="driverClass" value="${driverClass}"></property>
 				<property name="user" value="${user}"></property>
-				<property name="password" value="${password}"></property>
+				<property name="password" value="${password}"></property> -->
+			 	<property name="jdbcUrl" value="jdbc:mysql:///chong"></property>
+				<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+				<property name="user" value="root"></property>
+				<property name="password" value="m19881123"></property>   
+			<!-- 	<property name="jdbcUrl" value="jdbc:mysql://dogadoption.ctjktnzzskbl.us-west-2.rds.amazonaws.com/DogAdoption"></property>
+				<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+				<property name="user" value="michaelzhao007"></property>
+				<property name="password" value="m19881123"></property> -->
 			</bean>
 		</property>
 	</bean>
@@ -68,7 +76,6 @@
 	</bean>
 
 	<tx:annotation-driven transaction-manager="txManager"></tx:annotation-driven>
-
 	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/rest/*"/> 
 		<bean class=""></bean> </mvc:interceptor> </mvc:interceptors> -->
 </beans>

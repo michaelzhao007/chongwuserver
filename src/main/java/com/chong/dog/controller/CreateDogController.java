@@ -27,6 +27,7 @@ import com.chong.dog.model.Dog;
 import com.chong.dog.service.DogService;
 import com.chong.login.service.UserService;
 import com.chong.model.Response;
+import com.chong.util.AWSStorageUtil;
 import com.cloudinary.Cloudinary;
 
 @Controller
@@ -37,6 +38,8 @@ public class CreateDogController {
 	private DogService dogService;
 	@Resource
 	private UserService userService;
+	
+	private AWSStorageUtil awsStorageUtil = AWSStorageUtil.getInstance();
 
 	private static Log LOG = LogFactory.getLog(CreateDogController.class);
 
@@ -46,7 +49,6 @@ public class CreateDogController {
 			@RequestHeader("token") String token) {
 		Response response = new Response();
 		if (!userService.checkExpire(token)) {
-			dogService.createDog(dog);
 			try {
 				dogService.createDog(dog);
 				response.setStatus("200");
@@ -74,13 +76,13 @@ public class CreateDogController {
 			try {
 				if (filedata != null && !filedata.isEmpty()) {
 
-					String fileName = filedata.getOriginalFilename();
-					String extensionName = fileName.substring(fileName
-							.lastIndexOf(".") + 1);
-					String newFileName = String.valueOf(System
-							.currentTimeMillis()) + "." + extensionName;
+//					String fileName = filedata.getOriginalFilename();
+//					String extensionName = fileName.substring(fileName
+//							.lastIndexOf(".") + 1);
+//					String newFileName = String.valueOf(System
+//							.currentTimeMillis()) + "." + extensionName;
 					try {
-						response = saveFileCloud(id, filedata);
+						response = saveFileToS3(id, filedata);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -151,10 +153,32 @@ public class CreateDogController {
 		return response;
 	}
 	
+	private Response saveFileToS3(String id, MultipartFile filedata) {
+		Response response = new Response();
+		Dog dog = dogService.getById(Long.parseLong(id));
+		try{
+		 String url = awsStorageUtil.uploadFile(id, convert(filedata));
+		 dog.setDogImageUrl(url);
+			dogService.update(dog);
+			response.setStatus("200");
+			response.setResponseBody(dog);
+		}
+		catch(Exception exp){
+			response.setStatus("400");
+			exp.printStackTrace();
+			LOG.info("details of exception: " + exp);
+			response.setErrorMessage("upload image fail ");
+			response.setResponseBody(dog);
+		}
+		return response;		
+	}
+	
 	public File convert(MultipartFile file) throws IOException
 	{    
 	    File convFile = new File(file.getOriginalFilename());
+	    System.out.println("path is: " +	    convFile.getAbsolutePath());
 	    convFile.createNewFile(); 
+	    convFile.getAbsolutePath();
 	    FileOutputStream fos = new FileOutputStream(convFile); 
 	    fos.write(file.getBytes());
 	    fos.close(); 

@@ -38,6 +38,7 @@ public class ListDogController {
 	@RequestMapping(value = "/dog/list.json", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody Response listDog() {
 		Response response = new Response();
+		System.out.println("======");
 			try {
 				List<Dog> dogs = dogService.getAllDogs();
 				response.setStatus("200");

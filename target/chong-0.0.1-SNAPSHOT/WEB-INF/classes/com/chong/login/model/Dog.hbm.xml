@@ -10,7 +10,7 @@
 			<generator class="native"/>
 		</id>
 		<property name="dogName" type="string"/>
-		<property name="dogAge" type="int"/>
+		<property name="dogAge" type="string"/>
 		<property name="dogSex" type="string"/>
 		<property name="dogImageUrl" type="string"/>
 		<property name="description" type="string"/>
